@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
-import LoginPage from '../pages/LoginPage';
-import ChatPage from '../pages/ChatPage';
+import LoginPage from '../components/Login/LoginPage';
+import ChatPage from '../components/Chat/ChatPage';
 import { connect } from 'react-redux';
 
 const Routes = (props) => {
@@ -13,21 +13,15 @@ const Routes = (props) => {
   if (props.isAuth) {
     return(
       <Switch>
-        <Route path="/" exact>
-          <ChatPage />
-        </Route>
+        <Route path="/" exact component={ChatPage}/>
         <Redirect to="/"/>
       </Switch>
     )
   }
     return (
       <Switch>
-        <Route path="/" exact>
-          <LoginPage/>
-        </Route>
-        <Route path="/id:id"  >
-          <LoginPage/>
-        </Route>
+        <Route path="/" exact component={LoginPage}/>
+        <Route path="/id:id" component={LoginPage}/>
         <Redirect to="/"/>
       </Switch>
     )

@@ -4,3 +4,36 @@ h1,h2,h3,h4,h5 {
     text-align: center;
     color: #00b0ff;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 15px #e7dada;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00b0ff;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(198, 116, 231);
+}
+
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 5%;
+    left: 10%;
+}
+.toast-container_error {
+    background: #c9c7c8;
+    color: red;
+}
+.toast-container_success {
+    background: #c9c7c8;
+    color: #149315;
+}

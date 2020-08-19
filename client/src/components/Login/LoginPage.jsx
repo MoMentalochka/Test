@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {authRequest} from '../redux/actions';
+import {authRequest} from '../../redux/actions';
 import { useParams }  from 'react-router-dom';
+
 
 const LoginPage = (props) => {
   let {id = 'new'} = useParams()
-  console.log(id)
   const handleSubmit = (event) =>{
     event.preventDefault();
     let value = (document.getElementById('login')).value
@@ -14,6 +14,7 @@ const LoginPage = (props) => {
 
   return  (
     <div id="loginPage" className="container">
+
       <h1>Login Page</h1>
       <form id="loginForm" onSubmit={handleSubmit} >
 

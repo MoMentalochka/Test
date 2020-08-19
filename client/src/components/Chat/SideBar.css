@@ -1,0 +1,15 @@
+.sideBar {
+    font-size: 1.2em;
+    padding-left: 20px;
+    margin: 0 auto;
+    width: 35%;
+    min-width: 200px;
+    border-right: 2px solid #7e7e80 ;
+
+}
+
+.self_user {
+    color: #97ec5f;
+    display: flex;
+
+}

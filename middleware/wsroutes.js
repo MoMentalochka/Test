@@ -19,23 +19,23 @@ module.exports.websockified = server => {
     }
     console.log(`New user ${name} connected`);
     socket.join(id)
-    socket.emit('initUserInfo', {id: id, users:wsUsers[id]})
-    wsUsers[id].push(name)
+    socket.emit('initUserInfo', {roomId: id, id: socket.id, users:wsUsers[id]})
+    wsUsers[id].push({name, id: socket.id})
     console.log(`User ${name} connected to ${id} room`);
-    io.to(id).emit('newUser', {name: name})
+    io.to(id).emit('newUser', {name, id :socket.id})
     socket.on('newMessage', function(socket){
       if (socket.text) {
-        let time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        let time = moment().format(' h:mm:ss a');
         io.to(id).emit('chatMessage',{...socket, name, time })
       }
     })
 
     socket.on('disconnect', function(){
-      console.log(`${name} disconnected`);
-      delete wsUsers[id]
+      wsUsers[id] = wsUsers[id].filter(u => u.id !== socket.id)
+      console.log(`User with id: ${socket.id} disconnected`)
+      io.to(id).emit('disconnected', wsUsers[id])
+
     })
 
   })
-
-
 }
