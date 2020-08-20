@@ -6,7 +6,6 @@ export const socket = new SocketCreator('http://localhost:5000')
 
 const App = () => {
     return (
-
      <Routes/>
     )
 }
